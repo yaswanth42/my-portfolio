@@ -1,7 +1,11 @@
 {
   "name": "portfolio-root",
   "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "build": "cd frontend && npm install && npm run build"
+    "build": "cd frontend && npm run build"
   }
 }
