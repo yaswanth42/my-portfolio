@@ -16,8 +16,9 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Setup backend API URL (currently assuming running on port 5000)
-      const res = await axios.post('http://localhost:5000/api/contact', formData);
+      // Use relative path in production, localhost in development
+      const apiUrl = import.meta.env.DEV ? 'http://localhost:5000' : '';
+      const res = await axios.post(`${apiUrl}/api/contact`, formData);
       setStatus({ type: 'success', message: res.data.message || 'Message sent successfully!' });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
